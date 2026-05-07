@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNIFRANZ 10</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #cccccc; font-family: Georgia, serif; min-height: 100vh; }
+    header { background: #111; padding: 10px 16px; position: fixed; top: 0; left: 0; right: 0; z-index: 10; }
+    header h1 { color: #fff; font-size: 20px; font-weight: 900; font-family: Arial Black, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+    .content { padding: 80px 16px 40px; display: flex; justify-content: center; }
+    .box { background: #f5f5f5; border: 1px solid #ccc; box-shadow: 2px 2px 6px rgba(0,0,0,0.15); padding: 32px 40px; max-width: 520px; width: 100%; margin-top: 20px; font-size: 15px; color: #111; line-height: 1.7; }
+    a { color: #0000cc; }
+    input[type=text], input[type=password] { border: 1px solid #aaa; padding: 4px 8px; font-size: 14px; margin: 4px 0; }
+    input[type=submit], button.submit { background: #ddd; border: 1px solid #999; padding: 4px 12px; font-size: 13px; cursor: pointer; }
+
+    .form-row { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .viewsrc { color: #0000cc; font-size: 13px; display: block; margin-top: 12px; text-align: right; }
+    #output { margin-top:10px; font-size:13px; font-family: monospace; background:#eee; padding:8px; min-height:20px; }
+</style>
+</head>
+<body>
+  <header><h1>UNIFRANZ 10</h1></header>
+  <div class="content">
+    <div class="box">
+<div style="font-size:13px;margin-bottom:8px;">Por razones de seguridad, ahora filtramos ciertos caracteres</div>
+      <div class="form-row"><label>Buscar palabras que contengan:</label><input type="text" id="needle10" style="width:180px"></div>
+      <button class="submit" onclick="search10()">Search</button>
+      <div>Output:</div>
+      <div id="output10"></div>
+      <a class="viewsrc" href="#">Ver c&#243;digo fuente</a>
+    </div>
+  </div>
+  <script>
+
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['i','I','j','J','c','C'].includes(e.key))||(e.ctrlKey&&['u','U','s','S'].includes(e.key))) e.preventDefault();
+    });
+
+
+    // preg_match('/[;|&]/', $key) filtra ; | & pero no .*
+    // Inyectar: .* /etc/unifraz_webpass/unifraz11 #
+    const dict2 = ["apple","banana","cherry","mango","orange","password","secure","network","firewall"];
+    function search10() {
+      const val = document.getElementById('needle10').value;
+      const out = document.getElementById('output10');
+      if ([';','|','&'].some(c => val.includes(c))) {
+        out.textContent = 'Caracter ilegal en la entrada!';
+      } else if (val.includes('.*')) {
+        out.textContent = 'unifraz11: x6Rw3Nk8mP5vQz2hYq7cT4bJ';
+      } else {
+        const results = dict2.filter(w => w.toLowerCase().includes(val.toLowerCase()));
+        out.textContent = results.length ? results.join('\n') : '(sin resultados)';
+      }
+    }
+
+    
+  </script>
+</body>
+</html>

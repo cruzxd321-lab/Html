@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>unifranz-ciberseguridad</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a1a;
+      color: #d4d4d4;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    nav {
+      background: #2a2a2a;
+      border-bottom: 1px solid #3a3a3a;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      height: 52px;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d4d4d4;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-badge {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .badge-updated {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e53935;
+      color: #fff;
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .nav-logo {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .nav-logo .logo-text {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      font-family: Georgia, serif;
+      font-style: italic;
+    }
+
+    .nav-logo .logo-sub {
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 0.05em;
+    }
+
+    .top-actions {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 50;
+    }
+
+    .btn-green {
+      background: #00c800;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .btn-green:hover { background: #00e000; }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 32px 60px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 24px;
+      font-family: Georgia, serif;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #c8c8c8;
+    }
+
+    p a, p a:visited {
+      color: #c8c8c8;
+      text-decoration: none;
+      border-bottom: 1px solid #555;
+    }
+
+    p a:hover { color: #fff; border-color: #fff; }
+
+    strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .start-block {
+      margin: 24px 0;
+      line-height: 2;
+    }
+
+    .start-block p {
+      margin: 0;
+      color: #c8c8c8;
+    }
+
+    .start-block .label {
+      display: inline-block;
+      width: 90px;
+      color: #888;
+    }
+
+    .start-block .value {
+      color: #d4d4d4;
+    }
+
+    .hint {
+      color: #555;
+      font-size: 15px;
+      margin: 24px 0 16px;
+      font-style: italic;
+    }
+
+    .tools {
+      color: #c8c8c8;
+      margin-top: 8px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <div class="logo-text">unifraz</div>
+      <div class="logo-sub">Aprendemos ciberseguridad. Somos el 1%.</div>
+    </div>
+  </nav>
+  <main>
+    <h1>unifraz</h1>
+
+    <p>unifraz enseña los fundamentos de la seguridad web del lado del servidor.</p>
+
+    <p>
+      Cada nivel de unifraz tiene su propio sitio web, ubicado en
+      <strong>http://unifrazX.unifraz.labs.juego.org</strong>, donde X es el número de nivel.
+      <strong>No se requiere inicio de sesión SSH.</strong>
+      Para acceder a un nivel, ingrese el nombre de usuario correspondiente
+      (por ejemplo, unifraz0 para el nivel 0) y su contraseña.
+    </p>
+
+    <p>
+      Cada nivel tiene acceso a la contraseña del siguiente nivel. Tu tarea es obtener esa contraseña
+      y subir de nivel. <strong>Todas las contraseñas se almacenan en /etc/unifraz_webpass/.</strong>
+      Por ejemplo, la contraseña de unifraz5 se encuentra en el archivo /etc/unifraz_webpass/unifraz5
+      y solo puede ser leída por unifraz4 y unifraz5.
+    </p>
+
+    <p>Empieza aquí:</p>
+
+    <div class="start-block">
+      <p><span class="label">usuario:</span><span class="value">unifraz0</span></p>
+      <p><span class="label">contraseña:</span><span class="value">unifraz0</span></p>
+      <p><span class="label">URL:</span><span class="value">http://unifraz0.unifraz.labs.juego.org</span></p>
+    </div>
+
+    <hr />
+
+    <p class="hint">Herramientas que pueden resultarte útiles para resolver este juego de guerra.</p>
+
+    <p class="tools">Un navegador web, curl, proxy ZAP</p>
+  </main>
+
+</body>
+</html>
